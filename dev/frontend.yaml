@@ -18,6 +18,9 @@ spec:
         image: adarshjain428/ptmfrontend:v1
         ports:
         - containerPort: 80
+        env:
+        - name: REACT_APP_API_BASE_URL
+          value: http://backend.prod.svc.cluster.local:3500
 
         livenessProbe:
           httpGet:
