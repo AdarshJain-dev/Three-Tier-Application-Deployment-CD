@@ -12,7 +12,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - ptm.adarsh-jain-ecom.infinityfreeapp.com
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -23,7 +23,7 @@ spec:
   gateways:
   - prod-gateway
   hosts:
-  - "*"
+  - ptm.adarsh-jain-ecom.infinityfreeapp.com
   http:
   - route:
     - destination:
