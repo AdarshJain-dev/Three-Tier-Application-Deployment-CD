@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: adarshjain428/ptmbackend:v7
+        image: adarshjain428/ptmbackend:v8
         ports:
         - containerPort: 3500
         envFrom:
