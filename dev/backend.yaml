@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: adarshjain428/ptmbackend:v8
+        image: adarshjain428/backendapp:v5
         ports:
         - containerPort: 3500
         envFrom:
@@ -26,7 +26,7 @@ spec:
           httpGet:
             path: /health
             port: 3500
-          initialDelaySeconds: 90
+          initialDelaySeconds: 20
           periodSeconds: 10
           failureThreshold: 3
         
@@ -34,7 +34,7 @@ spec:
           httpGet:
             path: /ready
             port: 3500
-          initialDelaySeconds: 60
+          initialDelaySeconds: 10
           periodSeconds: 10
           failureThreshold: 3
 ---
@@ -48,6 +48,7 @@ spec:
     app: backend
   ports:
   - port: 3500
+    targetPort: 3500
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler

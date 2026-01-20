@@ -17,16 +17,36 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: frontend-vs
+  name: prod-vs
   namespace: prod
 spec:
-  gateways:
-  - prod-gateway
   hosts:
-  - ptm.adarsh-jain-ecom.infinityfreeapp.com
+    - ptm.adarsh-jain-ecom.infinityfreeapp.com
+  gateways:
+    - prod-gateway
   http:
-  - route:
-    - destination:
-        host: frontend
-        port:
-          number: 80
+    # ---- Backend APIs FIRST ----
+    - match:
+        - uri:
+            prefix: /student
+        - uri:
+            prefix: /teacher
+        - uri:
+            prefix: /addstudent
+        - uri:
+            prefix: /addteacher
+      route:
+        - destination:
+            host: backend.prod.svc.cluster.local
+            port:
+              number: 3500
+
+    # ---- Frontend LAST ----
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: frontend.prod.svc.cluster.local
+            port:
+              number: 80

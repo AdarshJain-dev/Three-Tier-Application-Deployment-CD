@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: adarshjain428/ptmfrontend:v1
+        image: adarshjain428/frontendapp:v5
         ports:
         - containerPort: 80
         env:
