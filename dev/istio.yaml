@@ -25,21 +25,20 @@ spec:
   gateways:
     - prod-gateway
   http:
-    # ---- Backend APIs FIRST ----
-    - match:
-        - uri:
-            prefix: /student
-        - uri:
-            prefix: /teacher
-        - uri:
-            prefix: /addstudent
-        - uri:
-            prefix: /addteacher
-      route:
-        - destination:
-            host: backend.prod.svc.cluster.local
-            port:
-              number: 3500
+- match:
+  - uri:
+      prefix: /student
+  - uri:
+      prefix: /teacher
+  - uri:
+      prefix: /addstudent
+  - uri:
+      prefix: /addteacher
+  route:
+  - destination:
+      host: backend.prod.svc.cluster.local
+      port:
+        number: 3500
 
     # ---- Frontend LAST ----
     - match:
